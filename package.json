@@ -1,0 +1,15 @@
+{
+  "name": "a-tu-lado-hoy-buscador",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./css/styles.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./css/styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  },
+  "dependencies": {
+    "lucide": "0.460.0"
+  }
+}

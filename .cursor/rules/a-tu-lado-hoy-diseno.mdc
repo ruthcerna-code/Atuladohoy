@@ -1,0 +1,52 @@
+---
+description: Sistema de diseño y reglas de contenido de A Tu Lado Hoy (buscador de servicios de bienestar)
+globs: ["**/*.html", "**/*.js", "**/*.jsx", "**/*.tsx", "**/*.css"]
+alwaysApply: true
+---
+
+# A Tu Lado Hoy · Sistema de diseño
+
+Toda pantalla nueva debe verse y comportarse como el prototipo de referencia:
+`prototipo-buscador/index.html` (estructura), `prototipo-buscador/src/input.css` (tokens de color),
+`prototipo-buscador/tailwind.config.js` (colores y tipografías), `prototipo-buscador/js/app.js` (componentes).
+Léelos antes de crear o modificar interfaz.
+
+## Stack
+- HTML + Tailwind CSS 3.4.17 + íconos Lucide 0.460.0 (`<i data-lucide="nombre">` y luego `lucide.createIcons()`).
+- No agregar otras librerías de UI ni de íconos sin preguntar.
+- Si se agregan clases de Tailwind nuevas, recompilar con `npm run build`.
+
+## Colores (usar SIEMPRE los tokens, nunca hex sueltos)
+- Fondo blanco `bg-bg` / `bg-surface`; gris suave `bg-soft`; bordes `border-line`.
+- Texto `text-ink`; secundario `text-muted`.
+- Azul petróleo `navy` (#1B4A6B): títulos, encabezados, estados seleccionados, pie de página (`bg-navybg`).
+- Coral `coral` (#F47A5C): solo acciones principales (Buscar, Ver servicio, Ofrece tus servicios). Un botón coral por bloque.
+- Tipos de servicio (fondo pastel + ícono del mismo tono):
+  - Atención psicológica: `bg-psi` / `text-psiI` (lavanda)
+  - Bienestar físico: `bg-fis` / `text-fisI` (azul)
+  - Práctica complementaria: `bg-comp` / `text-compI` (durazno)
+  - Comunitario y municipal: `bg-com` / `text-comI` (menta)
+- Mantener soporte de modo oscuro: los tokens ya cambian solos, no usar colores fijos.
+
+## Tipografía
+- Títulos: `font-serif` (Source Serif 4, semibold), color `text-navy`.
+- Texto e interfaz: `font-sans` (Nunito Sans).
+- Precios y números: clase `tnum`.
+
+## Componentes
+- Botón principal: `h-10 px-5 rounded-full bg-coral hover:bg-coralh text-oncoral font-bold text-sm`.
+- Botón secundario: `rounded-full bg-navybg text-onnavy` o borde `border-line`.
+- Opciones/filtros tipo píldora: `h-8 px-3 rounded-full border`; activo = `bg-navybg text-onnavy`.
+- Tarjeta de servicio: `bg-surface border border-line rounded-2xl p-2`, foto `aspect-[4/3] rounded-xl`, etiqueta del tipo sobre la foto, verificación con ícono `badge-check`, ubicación con `map-pin`, precio + corazón + botón coral en una fila.
+- Categorías: mosaicos pastel `rounded-2xl` con ícono Lucide `stroke-width="1.5"`.
+- Encabezado fijo (sticky) con logo, buscador y fila de opciones rápidas; debe quedar visible en celular.
+- Diseño responsive: probar a 390 px de ancho, sin scroll horizontal.
+
+## Reglas de contenido (obligatorias)
+- Español de Chile, frases cortas, tono cercano y sereno.
+- Distinguir siempre: atención psicológica profesional / bienestar físico / prácticas complementarias / programas comunitarios.
+- Prácticas complementarias llevan nota de evidencia y "No reemplaza atención médica/psicológica".
+- Nunca prometer curación ni resultados garantizados.
+- Publicidad o contenido pagado se rotula "Destacado · Publicidad".
+- Incluir aviso: A Tu Lado Hoy no es un servicio de urgencia (*4141 y SAMU 131; verificar con fuentes oficiales).
+- No inventar datos reales de prestadores, municipalidades ni cifras; los ejemplos se marcan como ficticios.

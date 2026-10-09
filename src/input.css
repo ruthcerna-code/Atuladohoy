@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tokens de color de la marca (modo claro y oscuro) y estilos base */
+/* Propuesta C v2: encabezado fijo (logo + buscador + accesos) con fila de opciones rápidas, banner rotativo de servicios destacados, tarjetas de acceso rápido superpuestas, categorías, filtros laterales y grilla. Fondo blanco. */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --soft:#F6F7F9; --ink:#1E2B38; --muted:#5F6B76; --line:#E6E9ED;
+  --navy:#1B4A6B; --navybg:#1B4A6B; --onnavy:#FFFFFF; --coral:#F47A5C; --coralh:#E8664A; --oncoral:#FFFFFF; --link:#2C6FA6;
+  --psi:#EEEAFA; --psiI:#7466C0; --fis:#E5EFFA; --fisI:#3D72AE; --comp:#FDE8E0; --compI:#E2694B; --com:#E2F2EE; --comI:#3E8E88;
+  --ok:#3E8E88; --warnbg:#FFF5E9; --warn:#9A6114;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1820; --surface:#16222C; --soft:#1B2A35; --ink:#E6EDF2; --muted:#A0AEBA; --line:#2A3B49;
+  --navy:#A9CDE6; --navybg:#143A54; --onnavy:#EEF5FA; --coral:#F47A5C; --coralh:#F68E74; --oncoral:#FFFFFF; --link:#8EC1E8;
+  --psi:#2A2640; --psiI:#C1B6F0; --fis:#1C2E42; --fisI:#97BFE8; --comp:#3B251E; --compI:#F5A68F; --com:#183430; --comI:#86CBC2;
+  --ok:#86CBC2; --warnbg:#33290F; --warn:#F0C77A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1820; --surface:#16222C; --soft:#1B2A35; --ink:#E6EDF2; --muted:#A0AEBA; --line:#2A3B49;
+  --navy:#A9CDE6; --navybg:#143A54; --onnavy:#EEF5FA; --coral:#F47A5C; --coralh:#F68E74; --oncoral:#FFFFFF; --link:#8EC1E8;
+  --psi:#2A2640; --psiI:#C1B6F0; --fis:#1C2E42; --fisI:#97BFE8; --comp:#3B251E; --compI:#F5A68F; --com:#183430; --comI:#86CBC2;
+  --ok:#86CBC2; --warnbg:#33290F; --warn:#F0C77A; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:"Nunito Sans",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{text-wrap:balance}
+.tnum{font-variant-numeric:tabular-nums}
+.noscroll{scrollbar-width:none}.noscroll::-webkit-scrollbar{display:none}
+input[type=checkbox]{accent-color:var(--navybg);width:1rem;height:1rem}
+:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+details>summary{list-style:none;cursor:pointer}details>summary::-webkit-details-marker{display:none}
+details[open]>summary .chev{transform:rotate(180deg)}
+[hidden]{display:none!important}
+#topbar{top:env(safe-area-inset-top,0px)}
+#track{transition:transform .6s ease}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
