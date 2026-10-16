@@ -31,4 +31,6 @@ details[open]>summary .chev{transform:rotate(180deg)}
 [hidden]{display:none!important}
 #topbar{top:env(safe-area-inset-top,0px)}
 #track{transition:transform .6s ease}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.guincha{animation:guincha 28s linear infinite}
+@keyframes guincha{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.guincha{animation:none}}

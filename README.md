@@ -15,8 +15,9 @@ a-tu-lado-hoy/
 ├── js/data.js            Datos de ejemplo: servicios, categorías, comunas, imágenes
 ├── js/app.js             Lógica: banner, accesos rápidos, filtros, resultados, favoritos
 ├── js/vendor/lucide.min.js  Librería de íconos (incluida, no depende de internet)
-├── assets/logo.svg       Logo provisorio
-├── assets/img/*.jpg      Fotos de las tarjetas y del banner
+├── assets/marca/         Logo
+├── assets/destacados/    Foto del aviso para profesionales
+├── assets/servicios/     Fotos por tipo de servicio del prototipo
 └── package.json          Scripts para recompilar estilos
 ```
 
@@ -45,14 +46,14 @@ Requiere Node.js 18 o superior.
 | Servicios de ejemplo | `js/data.js`, arreglo `S` |
 | Avisos del banner | `js/app.js`, arreglo `SLIDES` |
 | Accesos rápidos | `js/app.js`, arreglo `SHORT` |
-| Fotos | `assets/img/` y el mapa `IMG` en `js/data.js` |
+| Fotos | `assets/servicios/<tipo>/` y el campo `img` en `js/data.js` |
 | Íconos | Nombres de [lucide.dev/icons](https://lucide.dev/icons) en `data-lucide="nombre"` |
 
 ## Pendientes antes de publicar
 
 - **Datos ficticios:** prestadores, precios, avisos y programas son de ejemplo.
 - **Fotos de baja resolución:** se recortaron de una maqueta. Reemplázalas por fotos originales (ideal 1200 px de ancho).
-- **Logo provisorio:** `assets/logo.svg` es una aproximación; usa el archivo oficial.
+- **Logo provisorio:** `assets/marca/logo.svg` es una aproximación; usa el archivo oficial.
 - **Números de emergencia** (*4141 y SAMU 131): verificar contra fuentes oficiales del MINSAL.
 - **Botones sin destino:** "Ver servicio", "Ingresar", "Profesionales", etc. aún no llevan a otras pantallas.
 - **Revisión legal** de textos de verificación, publicidad y protección de datos según normativa chilena.

@@ -6,15 +6,15 @@ const $=id=>document.getElementById(id);
 const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
 const money=n=>'$'+n.toLocaleString('es-CL');
 const toResults=()=>$('results').scrollIntoView({behavior:'smooth',block:'start'});
-$('proImg').src=IMG.pro_man;
+$('proImg').src='assets/destacados/profesionales.jpg';
 $('comunaTop').innerHTML='<option value="">Santiago</option>'+COMUNAS.map(c=>`<option>${c}</option>`).join('');
 
 /* ---------- Banner rotativo ---------- */
 const SLIDES=[
- {tag:'Destacado · Publicidad',t:'Programa de mindfulness de 8 semanas',d:'Aprende a manejar el estrés desde tu casa, a tu ritmo.',cta:'Ver programa',img:'yoga2',bg:'bg-psi',fg:'text-psiI',go:()=>{clearAll(false);st.q='mindfulness';$('q').value='mindfulness'}},
- {tag:'Programas municipales',t:'Actividades gratuitas en tu comuna',d:'Talleres de respiración, yoga en el parque y encuentros para cuidadores.',cta:'Ver gratuitos',img:'yoga3',bg:'bg-com',fg:'text-comI',go:()=>{clearAll(false);st.tab='gratis'}},
- {tag:'Destacado · Publicidad',t:'Kinesiología a domicilio para personas mayores',d:'Profesionales con título verificado que van a tu casa.',cta:'Ver kinesiología',img:'kine_dom',bg:'bg-fis',fg:'text-fisI',go:()=>{clearAll(false);st.cats.add('Kinesiología')}},
- {tag:'Para profesionales',t:'Publica tus servicios y llega a más personas',d:'Psicólogos, facilitadores, pymes y fundaciones de Santiago.',cta:'Ofrece tus servicios',img:'pro_man',bg:'bg-comp',fg:'text-compI',go:null}];
+ {tag:'Destacado · Publicidad',t:'Programa de mindfulness de 8 semanas',d:'Aprende a manejar el estrés desde tu casa, a tu ritmo.',cta:'Ver programa',img:'assets/servicios/practica-complementaria/mindfulness.jpg',bg:'bg-psi',fg:'text-psiI',go:()=>{clearAll(false);st.q='mindfulness';$('q').value='mindfulness'}},
+ {tag:'Programas municipales',t:'Actividades gratuitas en tu comuna',d:'Talleres de respiración, yoga en el parque y encuentros para cuidadores.',cta:'Ver gratuitos',img:'assets/servicios/comunitario-municipal/yoga-parque.jpg',bg:'bg-com',fg:'text-comI',go:()=>{clearAll(false);st.tab='gratis'}},
+ {tag:'Destacado · Publicidad',t:'Kinesiología a domicilio para personas mayores',d:'Profesionales con título verificado que van a tu casa.',cta:'Ver kinesiología',img:'assets/servicios/bienestar-fisico/domicilio.jpg',bg:'bg-fis',fg:'text-fisI',go:()=>{clearAll(false);st.cats.add('Kinesiología')}},
+ {tag:'Para profesionales',t:'Publica tus servicios y llega a más personas',d:'Psicólogos, facilitadores, pymes y fundaciones de Santiago.',cta:'Ofrece tus servicios',img:'assets/destacados/profesionales.jpg',bg:'bg-comp',fg:'text-compI',go:null}];
 let slide=0,timer=null;
 $('track').innerHTML=SLIDES.map((s,i)=>`<div class="w-full shrink-0 ${s.bg}" role="group" aria-roledescription="diapositiva" aria-label="${i+1} de ${SLIDES.length}">
   <div class="max-w-6xl mx-auto px-4 md:px-16 pt-6 pb-20 md:pt-8 md:pb-20 grid grid-cols-[1fr_96px] sm:grid-cols-[1fr_200px] md:grid-cols-[1fr_380px] gap-4 md:gap-10 items-center">
@@ -24,7 +24,7 @@ $('track').innerHTML=SLIDES.map((s,i)=>`<div class="w-full shrink-0 ${s.bg}" rol
       <p class="mt-2 text-sm md:text-base text-ink max-w-md">${s.d}</p>
       <button data-slide="${i}" class="mt-4 inline-flex items-center gap-2 h-10 md:h-11 px-5 rounded-full bg-coral hover:bg-coralh text-oncoral text-sm font-bold">${s.cta}<i data-lucide="arrow-right" class="w-4 h-4"></i></button>
     </div>
-    <img src="${IMG[s.img]}" alt="" class="w-full aspect-square md:aspect-[16/10] object-cover rounded-2xl md:rounded-[28px] self-start md:self-center">
+    <img src="${s.img}" alt="" class="w-full aspect-square md:aspect-[16/10] object-cover rounded-2xl md:rounded-[28px] self-start md:self-center">
   </div></div>`).join('');
 $('dots').innerHTML=SLIDES.map((_,i)=>`<button data-dot="${i}" class="h-2 rounded-full transition-all" aria-label="Ir a la diapositiva ${i+1}"></button>`).join('');
 function goTo(i){slide=(i+SLIDES.length)%SLIDES.length;$('track').style.transform=`translateX(-${slide*100}%)`;
@@ -83,7 +83,7 @@ function drawGroups(){
       return `<label class="flex items-center gap-2.5 text-sm cursor-pointer ${!n&&!on?'opacity-45':''}"><input type="checkbox" data-g="${g.k}" value="${v}" ${on?'checked':''}>${T?`<span class="w-2.5 h-2.5 rounded-full ${T.bg} ring-2 ring-inset ring-current ${T.fg}"></span>`:''}<span class="flex-1">${l}</span><span class="text-xs text-muted tnum">${n}</span></label>`}).join('')}</div></details>`}).join('');
 }
 function media(s){const T=TYPES[s.type];
-  return s.img?`<img src="${IMG[s.img]}" alt="" class="w-full h-full object-cover">`
+  return s.img?`<img src="${s.img}" alt="" class="w-full h-full object-cover">`
    :`<div class="w-full h-full ${T.bg} ${T.fg} grid place-items-center"><i data-lucide="${CAT_ICON[s.cat]}" class="w-12 h-12" stroke-width="1.25"></i></div>`}
 function card(s){
   const T=TYPES[s.type],fav=favs.has(s.id);
